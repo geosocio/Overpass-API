@@ -20,6 +20,7 @@
 #include <sys/un.h>
 #include "types.h"
 
+#include <cstdio>
 #include <cstring>
 
 
@@ -59,6 +60,16 @@ void force_link_file(const std::string& source, const std::string& dest)
 
   if (link(source.c_str(), dest.c_str()))
     throw File_Error(errno, source, "force_link_file:2");
+}
+
+
+void rename_file(const std::string& source, const std::string& dest)
+{
+  if (!file_exists(source))
+    return;
+
+  if (rename(source.c_str(), dest.c_str()))
+    throw File_Error(errno, source, "rename_file:1");
 }
 
 
