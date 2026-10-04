@@ -113,7 +113,7 @@ void Transaction_Insulator::read_finished(pid_t pid)
 }
 
 
-void Transaction_Insulator::copy_shadows_to_mains()
+void Transaction_Insulator::swap_shadows_to_mains()
 {
   for (auto it = controlled_files.begin(); it != controlled_files.end(); ++it)
   {

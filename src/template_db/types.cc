@@ -65,6 +65,8 @@ void force_link_file(const std::string& source, const std::string& dest)
 
 void rename_file(const std::string& source, const std::string& dest)
 {
+  // The absence of the source is not an error: a partially completed
+  // commit must be completable idempotently on recovery.
   if (!file_exists(source))
     return;
 
